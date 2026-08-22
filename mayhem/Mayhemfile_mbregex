@@ -1,0 +1,12 @@
+project: savantenvs/php-src
+target: php-fuzz-mbregex
+
+# libFuzzer target from PHP's --enable-fuzzer SAPI (sapi/fuzzer/fuzzer-mbregex.c), built
+# instrumented (ASan+UBSan) on the org base with --enable-mbstring --enable-mbregex. Fuzzes
+# mb_ereg[i](). Upstream flags the bundled oniguruma as not UBSan-clean (sapi/fuzzer/README.md);
+# if it aborts under our default UBSan set, build.sh will narrow the relaxation there rather
+# than disabling UBSan globally.
+
+cmds:
+  - cmd: /mayhem/out/php-fuzz-mbregex
+    libfuzzer: true

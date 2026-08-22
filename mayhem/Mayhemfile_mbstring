@@ -1,0 +1,9 @@
+project: savantenvs/php-src
+target: php-fuzz-mbstring
+
+# libFuzzer target from PHP's --enable-fuzzer SAPI (sapi/fuzzer/fuzzer-mbstring.c), built
+# instrumented (ASan+UBSan) on the org base with --enable-mbstring. Fuzzes mb_convert_encoding().
+
+cmds:
+  - cmd: /mayhem/out/php-fuzz-mbstring
+    libfuzzer: true

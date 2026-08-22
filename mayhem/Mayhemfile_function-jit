@@ -1,0 +1,9 @@
+project: savantenvs/php-src
+target: php-fuzz-function-jit
+
+# libFuzzer target from PHP's --enable-fuzzer SAPI (sapi/fuzzer/fuzzer-function-jit.c), built
+# instrumented (ASan+UBSan) on the org base. Fuzzes the function JIT.
+
+cmds:
+  - cmd: /mayhem/out/php-fuzz-function-jit
+    libfuzzer: true

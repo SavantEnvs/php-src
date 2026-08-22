@@ -1,0 +1,9 @@
+project: savantenvs/php-src
+target: php-fuzz-tracing-jit
+
+# libFuzzer target from PHP's --enable-fuzzer SAPI (sapi/fuzzer/fuzzer-tracing-jit.c), built
+# instrumented (ASan+UBSan) on the org base. Fuzzes the tracing JIT.
+
+cmds:
+  - cmd: /mayhem/out/php-fuzz-tracing-jit
+    libfuzzer: true
