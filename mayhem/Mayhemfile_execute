@@ -1,0 +1,12 @@
+project: savantenvs/php-src
+target: php-fuzz-execute-buggy-mhh-run-286
+
+# libFuzzer target from PHP's --enable-fuzzer SAPI (sapi/fuzzer/fuzzer-execute.c), built
+# instrumented (ASan+UBSan) on the org base.
+# origin: https://app.mayhem.security/mayhemheroes/php-src/php-fuzz-execute/286
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+
+cmds:
+  - cmd: /mayhem/out/php-fuzz-execute
+    libfuzzer: true
