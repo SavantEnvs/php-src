@@ -1,0 +1,14 @@
+project: savantenvs/php-src
+target: php-fuzz-execute-mined-553a0c5
+# seed-from: https://app.mayhem.security/savantenvs/php-src/php-fuzz-execute
+
+# libFuzzer target from PHP's --enable-fuzzer SAPI (sapi/fuzzer/fuzzer-execute.c), built
+# instrumented (ASan+UBSan) on the org base. Compiles and runs the input as PHP code, so it reaches
+# ext/standard's substr().
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/php-fuzz-execute-mined-553a0c5/testsuite
+
+cmds:
+  - cmd: /mayhem/out/php-fuzz-execute
+    libfuzzer: true
