@@ -1,0 +1,14 @@
+project: savantenvs/php-src
+target: php-fuzz-exif-mined-aa82371
+# seed-from: https://app.mayhem.security/savantenvs/php-src/php-fuzz-exif
+
+# libFuzzer target from PHP's --enable-fuzzer SAPI (sapi/fuzzer/fuzzer-exif.c), built
+# instrumented (ASan+UBSan) on the org base. exif_read_data() parses HEIF/HEIC, reaching the
+# fixed pos.size check in exif_scan_HEIF_header().
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/php-fuzz-exif-mined-aa82371/testsuite
+
+cmds:
+  - cmd: /mayhem/out/php-fuzz-exif
+    libfuzzer: true
